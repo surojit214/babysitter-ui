@@ -1,0 +1,125 @@
+<a routerLink="/users" class="mt-5"><i class="fas fa-long-arrow-alt-left"> Back to list</i></a>
+
+<ul ngbNav #nav="ngbNav" [(activeId)]="active" class="nav-tabs">
+  <li [ngbNavItem]="1">
+    <a ngbNavLink>User</a>
+    <ng-template ngbNavContent>
+      <form [formGroup]="userFormGroup" (ngSubmit)="onSave()">
+        <div formGroupName="USER">
+          <div class="form-row">
+            <div class="form-group col-md-6">
+              <label for="name">Name</label>
+              <input type="text" class="form-control" id="name" placeholder="Name" formControlName="name">
+            </div>
+            <div class="form-group col-md-6">
+              <label for="inputEmail4">Email</label>
+              <input type="email" class="form-control" id="inputEmail4" placeholder="Email" formControlName="email">
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group col-md-6">
+              <label for="gender">Gender</label>
+              <input type="text" class="form-control" id="gender" placeholder="Gender" formControlName="gender">
+            </div>
+            <div class="form-group col-md-6">
+              <label for="phone">Phone</label>
+              <input type="text" class="form-control" id="phone" placeholder="Phone" formControlName="phoneNo">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="usertype">User type</label>
+            <input type="text" class="form-control" id="usertype" placeholder="usertype" formControlName="userType">
+          </div>
+        </div>
+        <button type="submit" class="btn btn-primary">Save</button>
+      </form>
+    </ng-template>
+  </li>
+  <li [ngbNavItem]="2" *ngIf="user?.userType == 'CUSTOMER'">
+    <a ngbNavLink>Baby Details</a>
+    <ng-template ngbNavContent>
+      <table class="table">
+        <thead class="thead-dark">
+        <tr>
+          <th scope="col">Name</th>
+          <th scope="col">Gender</th>
+          <th scope="col">DOB</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let baby of user?.babyDetails">
+          <td>{{baby.name}}</td>
+          <td>{{baby.gender}}</td>
+          <td>{{baby.dob}}</td>
+        </tr>
+        </tbody>
+      </table>
+    </ng-template>
+  </li>
+  <li [ngbNavItem]="3" *ngIf="user?.userType == 'CUSTOMER'">
+  <a ngbNavLink>Preference</a>
+  <ng-template ngbNavContent>
+    <form>
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <label for="nannymaxage">Max Age</label>
+          <input type="text" class="form-control" id="nannymaxage" placeholder="Max age" [value]="user?.userPreference.nannyMaxAge">
+        </div>
+        <div class="form-group col-md-6">
+          <label for="nannyminage">Min Age</label>
+          <input type="text" class="form-control" id="nannyminage" placeholder="Min age" [value]="user?.userPreference.nannyMinAge">
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <label for="nannygender">Nanny Gender</label>
+          <input type="text" class="form-control" id="nannygender" placeholder="Gender" [value]="user?.userPreference.nannyGender">
+        </div>
+        <div class="form-group col-md-6">
+          <label for="nannySearchPerimeter">Search Perimeter</label>
+          <input type="text" class="form-control" id="nannySearchPerimeter" placeholder="Search perimeter" [value]="user?.userPreference.nannySearchPerimeter">
+        </div>
+      </div>
+    </form>
+  </ng-template>
+</li>
+  <li [ngbNavItem]="4" *ngIf="user?.userType == 'NANNY'">
+    <a ngbNavLink>Preference</a>
+    <ng-template ngbNavContent>
+      <form>
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <label for="babymaxage">Max Age</label>
+            <input type="text" class="form-control" id="babymaxage" placeholder="Max age" [value]="user?.nannyPreference.babyMaxAge">
+          </div>
+          <div class="form-group col-md-6">
+            <label for="babyminage">Min Age</label>
+            <input type="text" class="form-control" id="babyminage" placeholder="Min age" [value]="user?.nannyPreference.babyMinAge">
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <label for="babygender">Baby Gender</label>
+            <input type="text" class="form-control" id="babygender" placeholder="Gender" [value]="user?.nannyPreference.preferredBabyGender">
+          </div>
+          <div class="form-group col-md-6">
+            <label for="babySearchPerimeter">Search Perimeter</label>
+            <input type="text" class="form-control" id="babySearchPerimeter" placeholder="Search perimeter" [value]="user?.nannyPreference.babyLocationPerimeter">
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <label for="starttime">Start time</label>
+            <input type="text" class="form-control" id="starttime" placeholder="Start time" [value]="user?.nannyPreference.jobStartTime">
+          </div>
+          <div class="form-group col-md-6">
+            <label for="endtime">End time</label>
+            <input type="text" class="form-control" id="endtime" placeholder="End time" [value]="user?.nannyPreference.jobEndTime">
+          </div>
+        </div>
+      </form>
+    </ng-template>
+  </li>
+</ul>
+
+<div [ngbNavOutlet]="nav" class="mt-2"></div>

@@ -1,0 +1,50 @@
+<!--<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <p>
+      <mat-toolbar color="primary">
+        <img src="../assets/images/4-01.jpg" width="40">
+        <span>Sitter App</span>
+        <span class="example-spacer"></span>
+      </mat-toolbar>
+    </p>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="#">Home</a></li>
+        <li><a href="#">User</a></li>
+        <li><a href="#">Reservation</a></li>
+        <li><a href="#">History</a></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>-->
+<nav class="navbar navbar-dark bg-primary">
+  <div class="container-fluid">
+
+      <mat-toolbar color="primary">
+        <img src="../assets/images/baby-face.png" width="30" height="30" class="d-inline-block align-top" alt="">
+        <span style="">Sitter App</span>
+        <span class="example-spacer"></span>
+        <app-login-status></app-login-status>
+      </mat-toolbar>
+
+
+  </div>
+</nav>
+
+<div class="container-fluid text-center">
+  <div class="row content">
+    <div class="col-sm-2 sidenav">
+      <p><a routerLink="/usertype/CUSTOMER" routerLinkActive="active-link">User</a></p>
+      <p><a routerLink="/usertype/NANNY" routerLinkActive="active-link">Nanny</a></p>
+      <p><a routerLink="/reservations" routerLinkActive="active-link">Reservation</a></p>
+      <p><a routerLink="/history" routerLinkActive="active-link">History</a></p>
+    </div>
+    <div class="col-sm-8 text-left">
+      <router-outlet></router-outlet>
+<!--      <app-user-list></app-user-list>-->
+    </div>
+  </div>
+</div>

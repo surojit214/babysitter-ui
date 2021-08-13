@@ -1,0 +1,11 @@
+.security-btn {
+  color: #000;
+  position: relative;
+  min-width: 95px;
+}
+.login-status-header {
+  display: flex;
+}
+.login-status-user-info {
+  color: greenyellow;
+}
